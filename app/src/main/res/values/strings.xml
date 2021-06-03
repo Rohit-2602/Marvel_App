@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Marvel App</string>
+    <string name="no_result_found">No Result Found</string>
+    <string name="results_could_not_be_loaded">Results could not be loaded</string>
+    <string name="retry">Retry</string>
 </resources>

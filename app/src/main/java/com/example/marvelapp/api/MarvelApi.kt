@@ -14,6 +14,21 @@ interface MarvelApi {
     }
 
     @GET("characters")
-    suspend fun getAllHeroes(@Query("offset") offset: Int? = 0, @Query("limit") limit : Int ?= 20): MarvelResponse
+    suspend fun getAllCharacters(
+        @Query("offset") offset: Int? = 0,
+        @Query("limit") limit: Int? = 20
+    ): MarvelResponse
+
+    @GET("characters")
+    suspend fun searchCharacter(
+        @Query("nameStartsWith") query: String,
+        @Query("offset") offset: Int? = 0,
+        @Query("limit") limit: Int? = 20
+    ): MarvelResponse
+
+//    @GET("characters")
+//    suspend fun searchCharacter(
+//        @Query("nameStartsWith") query: String
+//    ): MarvelResponse
 
 }
