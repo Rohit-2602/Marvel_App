@@ -19,6 +19,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "MARVEL_PUBLIC_KEY", public_key)
+        buildConfigField("String", "MARVEL_PRIVATE_KEY", private_key)
+        buildConfigField("String", "MARVEL_HASH", hash)
+
     }
 
     buildTypes {
@@ -83,5 +88,14 @@ dependencies {
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
+
+    // Retrofit + GSON
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+    // Paging 3
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
 
 }
