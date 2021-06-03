@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:id="@+id/cardView"
-    xmlns:tools="http://schemas.android.com/tools">
+    app:cardCornerRadius="10dp"
+    android:background="@drawable/rectangle_curved">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,8 +17,8 @@
             android:id="@+id/hero_imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/thor"
             android:scaleType="centerCrop"
+            android:src="@drawable/spiderman"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
@@ -25,13 +27,13 @@
             android:id="@+id/hero_name_TV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hero_imageView"
-            tools:text="Thor" />
+            tools:text="Spider Man" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
