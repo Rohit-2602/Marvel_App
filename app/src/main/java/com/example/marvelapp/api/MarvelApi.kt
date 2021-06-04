@@ -1,7 +1,7 @@
 package com.example.marvelapp.api
 
 import com.example.marvelapp.BuildConfig
-import com.example.marvelapp.data.MarvelResponse
+import com.example.marvelapp.data.CharacterResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,14 +17,14 @@ interface MarvelApi {
     suspend fun getAllCharacters(
         @Query("offset") offset: Int? = 0,
         @Query("limit") limit: Int? = 20
-    ): MarvelResponse
+    ): CharacterResponse
 
     @GET("characters")
     suspend fun searchCharacter(
         @Query("nameStartsWith") query: String,
         @Query("offset") offset: Int? = 0,
         @Query("limit") limit: Int? = 20
-    ): MarvelResponse
+    ): CharacterResponse
 
 //    @GET("characters")
 //    suspend fun searchCharacter(

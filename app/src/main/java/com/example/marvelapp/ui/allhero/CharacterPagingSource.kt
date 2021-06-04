@@ -3,7 +3,7 @@ package com.example.marvelapp.ui.allhero
 import android.util.Log
 import androidx.paging.PagingSource
 import com.example.marvelapp.api.MarvelApi
-import com.example.marvelapp.data.MarvelHero
+import com.example.marvelapp.data.CharacterResult
 import retrofit2.HttpException
 
 private const val STARTING_OFFSET = 0
@@ -12,9 +12,9 @@ private const val LOAD_SIZE = 20
 class CharacterPagingSource(
     private val marvelApi: MarvelApi,
     private val query: String
-) : PagingSource<Int, MarvelHero>() {
+) : PagingSource<Int, CharacterResult>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MarvelHero> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterResult> {
         val position = (params.key ?: STARTING_OFFSET)
         return try {
 

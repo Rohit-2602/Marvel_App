@@ -12,19 +12,19 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.example.marvelapp.data.MarvelHero
+import com.example.marvelapp.data.CharacterResult
 import com.example.marvelapp.databinding.ItemHeroesBinding
 
 class AllCharacterAdapter(private val listener: OnClickListener) :
-    PagingDataAdapter<MarvelHero, AllCharacterAdapter.AllCharacterViewHolder>(COMPARATOR) {
+    PagingDataAdapter<CharacterResult, AllCharacterAdapter.AllCharacterViewHolder>(COMPARATOR) {
 
     companion object {
-        private val COMPARATOR = object : DiffUtil.ItemCallback<MarvelHero>() {
-            override fun areItemsTheSame(oldItem: MarvelHero, newItem: MarvelHero): Boolean {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<CharacterResult>() {
+            override fun areItemsTheSame(oldItem: CharacterResult, newItem: CharacterResult): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: MarvelHero, newItem: MarvelHero): Boolean {
+            override fun areContentsTheSame(oldItem: CharacterResult, newItem: CharacterResult): Boolean {
                 return oldItem.name == newItem.name
             }
         }
@@ -45,7 +45,7 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
             }
         }
 
-        fun bind(character: MarvelHero) {
+        fun bind(character: CharacterResult) {
             binding.apply {
                 Glide.with(itemView)
                     .load(character.thumbnail.path + "." + character.thumbnail.extension)
@@ -91,5 +91,5 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
 }
 
 interface OnClickListener {
-    fun onClick(character: MarvelHero)
+    fun onClick(character: CharacterResult)
 }

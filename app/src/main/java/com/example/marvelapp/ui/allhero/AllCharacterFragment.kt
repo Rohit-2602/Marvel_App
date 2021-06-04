@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.marvelapp.R
-import com.example.marvelapp.data.MarvelHero
+import com.example.marvelapp.data.CharacterResult
 import com.example.marvelapp.databinding.FragmentAllCharactersBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -73,7 +73,7 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), OnClick
 
     }
 
-    override fun onClick(character: MarvelHero) {
+    override fun onClick(character: CharacterResult) {
         val action = AllCharacterFragmentDirections.actionAllHeroFragmentToCharacterDetailFragment(character)
         findNavController().navigate(action)
     }

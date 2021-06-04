@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Data(val results: List<MarvelHero>): Parcelable
+data class CharacterData(val results: List<CharacterResult>): Parcelable
