@@ -1,3 +1,7 @@
 package com.example.marvelapp.data
 
-data class MarvelResponse(val data: Data)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class MarvelResponse(val data: Data): Parcelable

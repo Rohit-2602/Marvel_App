@@ -6,14 +6,16 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.marvelapp.R
+import com.example.marvelapp.data.MarvelHero
 import com.example.marvelapp.databinding.FragmentAllCharactersBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AllCharacterFragment : Fragment(R.layout.fragment_all_characters) {
+class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), OnClickListener {
 
     private val viewModel by viewModels<AllCharacterViewModel>()
     private var _binding: FragmentAllCharactersBinding? = null
@@ -23,7 +25,7 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAllCharactersBinding.bind(view)
 
-        val allCharacterAdapter = AllCharacterAdapter()
+        val allCharacterAdapter = AllCharacterAdapter(this)
 
         allCharacterAdapter.addLoadStateListener { loadState ->
             binding.apply {
@@ -69,6 +71,11 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters) {
             allCharacterAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
 
+    }
+
+    override fun onClick(character: MarvelHero) {
+        val action = AllCharacterFragmentDirections.actionAllHeroFragmentToCharacterDetailFragment(character)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

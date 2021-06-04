@@ -15,7 +15,7 @@ import com.bumptech.glide.request.target.Target
 import com.example.marvelapp.data.MarvelHero
 import com.example.marvelapp.databinding.ItemHeroesBinding
 
-class AllCharacterAdapter :
+class AllCharacterAdapter(private val listener: OnClickListener) :
     PagingDataAdapter<MarvelHero, AllCharacterAdapter.AllCharacterViewHolder>(COMPARATOR) {
 
     companion object {
@@ -30,8 +30,21 @@ class AllCharacterAdapter :
         }
     }
 
-    class AllCharacterViewHolder(private val binding: ItemHeroesBinding) :
+    inner class AllCharacterViewHolder(private val binding: ItemHeroesBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.cardView.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val character = getItem(position)
+                    if (character != null) {
+                        listener.onClick(character)
+                    }
+                }
+            }
+        }
+
         fun bind(character: MarvelHero) {
             binding.apply {
                 Glide.with(itemView)
@@ -66,11 +79,7 @@ class AllCharacterAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllCharacterViewHolder {
         val binding = ItemHeroesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val viewHolder = AllCharacterViewHolder(binding)
-        binding.cardView.setOnClickListener {
-
-        }
-        return viewHolder
+        return AllCharacterViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: AllCharacterViewHolder, position: Int) {
@@ -79,4 +88,8 @@ class AllCharacterAdapter :
             holder.bind(currentCharacter)
         }
     }
+}
+
+interface OnClickListener {
+    fun onClick(character: MarvelHero)
 }

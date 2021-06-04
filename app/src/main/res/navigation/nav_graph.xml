@@ -9,5 +9,18 @@
         android:id="@+id/allHeroFragment"
         android:name="com.example.marvelapp.ui.allhero.AllCharacterFragment"
         android:label="fragment_all_heroes"
-        tools:layout="@layout/fragment_all_characters" />
+        tools:layout="@layout/fragment_all_characters" >
+        <action
+            android:id="@+id/action_allHeroFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.example.marvelapp.ui.detail.CharacterDetailFragment"
+        android:label="fragment_character_detail"
+        tools:layout="@layout/fragment_character_detail" >
+        <argument
+            android:name="Character"
+            app:argType="com.example.marvelapp.data.MarvelHero" />
+    </fragment>
 </navigation>
