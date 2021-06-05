@@ -14,8 +14,6 @@ class AllCharacterViewModel @ViewModelInject constructor(private val repository:
 
     val searchQuery = MutableStateFlow("")
 
-//    val characters = repository.getCharacters().cachedIn(viewModelScope)
-
     val searchResult = searchQuery.flatMapLatest { query ->
         repository.searchCharacter(query).cachedIn(viewModelScope)
     }.asLiveData()

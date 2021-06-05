@@ -11,15 +11,16 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageViewPager"
+            android:id="@+id/seriesThumbnail"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/spiderman"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewPager"
+            android:id="@+id/seriesTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +29,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageViewPager"
+            app:layout_constraintStart_toEndOf="@+id/seriesThumbnail"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

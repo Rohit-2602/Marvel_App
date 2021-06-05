@@ -9,9 +9,6 @@ data class CharacterResult(
     val name: String,
     val description: String,
     val thumbnail: Thumbnail,
-    val comics: Comics,
-    val series: Series,
-    val stories: Stories,
     val urls: List<Url>
 ) : Parcelable {
 

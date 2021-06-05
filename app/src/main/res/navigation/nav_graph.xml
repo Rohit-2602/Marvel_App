@@ -21,6 +21,6 @@
         tools:layout="@layout/fragment_character_detail" >
         <argument
             android:name="Character"
-            app:argType="com.example.marvelapp.data.MarvelHero" />
+            app:argType="com.example.marvelapp.data.CharacterResult" />
     </fragment>
 </navigation>
