@@ -1,9 +1,9 @@
 ## Marvel App
 This project consists of an app made with Kotlin that uses the Marvel API to list all the heroes, appearances and the description.
 
-<img src="https://user-images.githubusercontent.com/65807152/120926816-0867a300-c6fc-11eb-82ad-a7b55b024c7a.jpg" width=100 align=left>
-<img src="https://user-images.githubusercontent.com/65807152/120926825-0ef61a80-c6fc-11eb-917e-6c107cba4305.jpg" width=100 align=right>
-<img src="https://user-images.githubusercontent.com/65807152/120926822-0c93c080-c6fc-11eb-8fd8-a575e127883a.jpg" width=100 align=right>  
+<img src="https://user-images.githubusercontent.com/65807152/120926816-0867a300-c6fc-11eb-82ad-a7b55b024c7a.jpg" width=300 align=left>
+<img src="https://user-images.githubusercontent.com/65807152/120926825-0ef61a80-c6fc-11eb-917e-6c107cba4305.jpg" width=300 align=right>
+<img src="https://user-images.githubusercontent.com/65807152/120926822-0c93c080-c6fc-11eb-8fd8-a575e127883a.jpg" width=300 align=center>  
 
 ## Techs Used
 Retrofit (for api call), Dagger (for Dependency Injection), Paging3
