@@ -2,11 +2,14 @@ package com.example.marvelapp.ui.comic
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marvelapp.R
 import com.example.marvelapp.databinding.FragmentComicBinding
+import com.example.marvelapp.ui.allhero.MarvelLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,8 +25,26 @@ class ComicFragment(private val characterId: String): Fragment(R.layout.fragment
 
         val comicAdapter = ComicRecyclerViewAdapter()
 
+        comicAdapter.addLoadStateListener { loadState ->
+            binding.apply {
+                comicProgressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                comicRecyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
+                if (loadState.source.refresh is LoadState.NotLoading &&
+                    loadState.append.endOfPaginationReached && comicAdapter.itemCount < 1) {
+                    comicRecyclerView.isVisible = false
+                    noResultFoundTextView.isVisible = true
+                }
+                else {
+                    noResultFoundTextView.isVisible = false
+                }
+            }
+        }
+
         binding.apply {
-            comicRecyclerView.adapter = comicAdapter
+            comicRecyclerView.adapter = comicAdapter.withLoadStateHeaderAndFooter(
+                header = MarvelLoadStateAdapter { comicAdapter.retry() },
+                footer = MarvelLoadStateAdapter { comicAdapter.retry() }
+            )
             comicRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             comicRecyclerView.setHasFixedSize(true)
         }
