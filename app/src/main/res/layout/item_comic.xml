@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp">
@@ -17,20 +18,40 @@
             android:scaleType="centerCrop"
             android:src="@drawable/spiderman"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/comicTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Story Title"
+            tools:text="Comic Title"
             android:textSize="20sp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/comicThumbnail"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/comicDescription"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            tools:text="Comic Description"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/comicThumbnail"
+            app:layout_constraintTop_toBottomOf="@id/comicTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -32,6 +32,7 @@ class SeriesRecyclerViewAdapter :
                 Glide.with(itemView).load(series.thumbnail.path + "." + series.thumbnail.extension)
                     .into(seriesThumbnail)
                 seriesTitle.text = series.title
+                seriesDescription.text = series.description
             }
         }
     }

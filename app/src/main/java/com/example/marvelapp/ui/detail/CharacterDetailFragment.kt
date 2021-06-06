@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.marvelapp.R
 import com.example.marvelapp.databinding.FragmentCharacterDetailBinding
 import com.example.marvelapp.ui.comic.ComicFragment
+import com.example.marvelapp.ui.description.CharacterDescription
 import com.example.marvelapp.ui.series.SeriesFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,12 +29,13 @@ class CharacterDetailFragment: Fragment(R.layout.fragment_character_detail) {
 
         binding.apply {
             Glide.with(requireContext()).load(character.thumbnail.path + "." + character.thumbnail.extension).into(characterImageView)
+            characterNameTextView.text = character.name
         }
 
         val fragments = arrayListOf(
+            CharacterDescription(character.description),
             ComicFragment(character.id),
-            SeriesFragment(character.id),
-            ComicFragment(character.id)
+            SeriesFragment(character.id)
         )
 
         val viewPagerAdapter = ViewPagerAdapter(fragments, requireActivity())
@@ -43,9 +45,9 @@ class CharacterDetailFragment: Fragment(R.layout.fragment_character_detail) {
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = "Comics"
-                1 -> tab.text = "Series"
-                2 -> tab.text = "Stories"
+                0 -> tab.text = "Description"
+                1 -> tab.text = "Comics"
+                2 -> tab.text = "Series"
             }
         }.attach()
 

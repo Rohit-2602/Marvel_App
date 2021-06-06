@@ -32,6 +32,7 @@ class ComicRecyclerViewAdapter :
                 Glide.with(itemView).load(comic.thumbnail.path + "." + comic.thumbnail.extension)
                     .into(comicThumbnail)
                 comicTitle.text = comic.title
+                comicDescription.text = comic.description
             }
         }
     }
