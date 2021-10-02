@@ -16,11 +16,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/results_could_not_be_loaded"
-        android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textColor="@color/gray"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/retryButton"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@color/gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/retry" />

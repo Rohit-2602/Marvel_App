@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -14,21 +13,10 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.marvelapp.data.SeriesResult
 import com.example.marvelapp.databinding.ItemSeriesBinding
+import com.example.marvelapp.util.Comparator.CHARACTER_SERIES_COMPARATOR
 
 class SeriesRecyclerViewAdapter :
-    PagingDataAdapter<SeriesResult, SeriesRecyclerViewAdapter.ComicViewHolder>(COMPARATOR_COMICS) {
-
-    companion object {
-        private val COMPARATOR_COMICS = object : DiffUtil.ItemCallback<SeriesResult>() {
-            override fun areItemsTheSame(oldItem: SeriesResult, newItem: SeriesResult): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: SeriesResult, newItem: SeriesResult): Boolean {
-                return oldItem.title == newItem.title
-            }
-        }
-    }
+    PagingDataAdapter<SeriesResult, SeriesRecyclerViewAdapter.ComicViewHolder>(CHARACTER_SERIES_COMPARATOR) {
 
     inner class ComicViewHolder(private val binding: ItemSeriesBinding) :
         RecyclerView.ViewHolder(binding.root) {

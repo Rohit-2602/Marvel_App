@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -15,27 +14,16 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.marvelapp.data.CharacterResult
 import com.example.marvelapp.databinding.ItemCharacterBinding
+import com.example.marvelapp.util.Comparator.CHARACTER_COMPARATOR
 
 class AllCharacterAdapter(private val listener: OnClickListener) :
-    PagingDataAdapter<CharacterResult, AllCharacterAdapter.AllCharacterViewHolder>(COMPARATOR) {
-
-    companion object {
-        private val COMPARATOR = object : DiffUtil.ItemCallback<CharacterResult>() {
-            override fun areItemsTheSame(oldItem: CharacterResult, newItem: CharacterResult): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: CharacterResult, newItem: CharacterResult): Boolean {
-                return oldItem.name == newItem.name
-            }
-        }
-    }
+    PagingDataAdapter<CharacterResult, AllCharacterAdapter.AllCharacterViewHolder>(CHARACTER_COMPARATOR) {
 
     inner class AllCharacterViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.cardView.setOnClickListener {
+            binding.characterCardView.setOnClickListener {
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val character = getItem(position)

@@ -75,14 +75,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
-    //Shimmer Effect
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
-
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
-//    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
-//    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
 
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
@@ -97,8 +92,5 @@ dependencies {
 
     // Paging 3
     implementation "androidx.paging:paging-runtime:$pagingVersion"
-
-    // Shimmer Layout
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
 }

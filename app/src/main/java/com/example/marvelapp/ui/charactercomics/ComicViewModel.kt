@@ -11,6 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ComicViewModel @Inject constructor(private val marvelRepository: MarvelRepository): ViewModel() {
 
-    fun getCharacterComics(characterId: String) = marvelRepository.getCharacterComics(characterId).asLiveData().cachedIn(viewModelScope)
+    fun getCharacterComics(characterId: String) =
+        marvelRepository.getCharacterComics(characterId).asLiveData().cachedIn(viewModelScope)
 
 }

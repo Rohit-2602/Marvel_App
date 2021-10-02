@@ -9,9 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="red">#e23636</color>
-    <color name="light_gray">#fafafa</color>
-    <color name="search_bg">#f7f7f7</color>
-    <color name="background">#EAEAEE</color>
-    <color name="searchView">#B5B7C6</color>
+
+    <color name="light_black">#191A1C</color>
+    <color name="gray">#A0A0A0</color>
+    <color name="dark_gray">#303136</color>
+    <color name="button_color">#4F535C</color>
 
 </resources>

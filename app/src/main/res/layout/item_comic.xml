@@ -5,13 +5,13 @@
     android:id="@+id/comic_cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="15dp"
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/light_gray"
+        android:background="@color/dark_gray"
         android:padding="10dp">
 
         <androidx.cardview.widget.CardView
@@ -31,6 +31,12 @@
                 android:src="@drawable/spiderman"
                 tools:ignore="ContentDescription" />
 
+            <ProgressBar
+                android:id="@+id/comic_progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"/>
+
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -41,7 +47,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/audiowide"
             android:maxLines="1"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,21 +63,12 @@
             android:ellipsize="end"
             android:fontFamily="@font/audiowide"
             android:maxLines="5"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/comic_name"
             app:layout_constraintTop_toBottomOf="@+id/comic_name"
             tools:text="Attuma was born into te tribe of Homo mermanus who escewed civilization to live as nomadic barbarians. For some unrecorded reason, Attuma was endowed with strength far surpassing that of his people." />
-
-        <ProgressBar
-            android:id="@+id/comic_progressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/comic_image_constraint"
-            app:layout_constraintEnd_toEndOf="@+id/comic_image_constraint"
-            app:layout_constraintStart_toStartOf="@id/comic_image_constraint"
-            app:layout_constraintTop_toTopOf="@id/comic_image_constraint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

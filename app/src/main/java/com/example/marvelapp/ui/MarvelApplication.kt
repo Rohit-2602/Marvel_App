@@ -1,4 +1,4 @@
-package com.example.marvelapp
+package com.example.marvelapp.ui
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
