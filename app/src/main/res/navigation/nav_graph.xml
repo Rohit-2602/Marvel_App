@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/allHeroFragment"
-        android:name="com.example.marvelapp.ui.allhero.AllCharacterFragment"
+        android:name="com.example.marvelapp.ui.allcharacters.AllCharacterFragment"
         android:label="fragment_all_heroes"
         tools:layout="@layout/fragment_all_characters" >
         <action
@@ -16,11 +16,11 @@
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
-        android:name="com.example.marvelapp.ui.detail.CharacterDetailFragment"
+        android:name="com.example.marvelapp.ui.characterdetail.CharacterDetailFragment"
         android:label="fragment_character_detail"
         tools:layout="@layout/fragment_character_detail" >
         <argument
-            android:name="Character"
+            android:name="character"
             app:argType="com.example.marvelapp.data.CharacterResult" />
     </fragment>
 </navigation>

@@ -9,6 +9,8 @@ data class CharacterResult(
     val name: String,
     val description: String,
     val thumbnail: Thumbnail,
+    val comics: Comics,
+    val series: Series,
     val urls: List<Url>
 ) : Parcelable {
 
@@ -17,5 +19,11 @@ data class CharacterResult(
 
     @Parcelize
     data class Url(val type: String, val url: String): Parcelable
+
+    @Parcelize
+    data class Comics(val available: String): Parcelable
+
+    @Parcelize
+    data class Series(val available: String): Parcelable
 
 }

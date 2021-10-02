@@ -1,4 +1,4 @@
-package com.example.marvelapp.ui.detail
+package com.example.marvelapp.ui.characterdetail
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

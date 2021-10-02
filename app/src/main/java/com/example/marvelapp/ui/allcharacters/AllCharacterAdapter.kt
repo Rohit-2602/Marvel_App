@@ -1,5 +1,6 @@
-package com.example.marvelapp.ui.allhero
+package com.example.marvelapp.ui.allcharacters
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.marvelapp.data.CharacterResult
-import com.example.marvelapp.databinding.ItemHeroesBinding
+import com.example.marvelapp.databinding.ItemCharacterBinding
 
 class AllCharacterAdapter(private val listener: OnClickListener) :
     PagingDataAdapter<CharacterResult, AllCharacterAdapter.AllCharacterViewHolder>(COMPARATOR) {
@@ -30,7 +31,7 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
         }
     }
 
-    inner class AllCharacterViewHolder(private val binding: ItemHeroesBinding) :
+    inner class AllCharacterViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -45,6 +46,7 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
             }
         }
 
+        @SuppressLint("SetTextI18n")
         fun bind(character: CharacterResult) {
             binding.apply {
                 Glide.with(itemView)
@@ -56,7 +58,7 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
                             target: Target<Drawable>?,
                             isFirstResource: Boolean
                         ): Boolean {
-                            heroProgressBar.isVisible = false
+                            characterProgressbar.isVisible = false
                             return false
                         }
 
@@ -67,18 +69,27 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
                             dataSource: DataSource?,
                             isFirstResource: Boolean
                         ): Boolean {
-                            heroProgressBar.isVisible = false
+                            characterProgressbar.isVisible = false
                             return false
                         }
                     })
-                    .centerCrop().into(heroImageView)
-                heroNameTV.text = character.name
+                    .centerCrop().into(characterImage)
+                characterName.text = character.name
+                val description = character.description
+                if (description == "") {
+                    characterDescription.text = "No Description"
+                }
+                else {
+                    characterDescription.text = character.description
+                }
+                characterComics.text = "Comics: ${character.comics.available}"
+                characterSeries.text = "Series: ${character.series.available}"
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllCharacterViewHolder {
-        val binding = ItemHeroesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AllCharacterViewHolder(binding)
     }
 

@@ -2,9 +2,9 @@ package com.example.marvelapp.api
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.example.marvelapp.ui.allhero.CharacterPagingSource
-import com.example.marvelapp.ui.comic.ComicPagingSource
-import com.example.marvelapp.ui.series.SeriesPagingSource
+import com.example.marvelapp.ui.allcharacters.CharacterPagingSource
+import com.example.marvelapp.ui.charactercomics.ComicPagingSource
+import com.example.marvelapp.ui.characterseries.SeriesPagingSource
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/series_cardView"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
@@ -10,12 +10,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:background="@color/light_gray"
         android:padding="10dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/series_image_constraint"
+            android:id="@+id/character_image_constraint"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             app:cardCornerRadius="10dp"
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/series_image"
+                android:id="@+id/character_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -34,7 +34,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/series_name"
+            android:id="@+id/character_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -45,33 +45,56 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/series_image_constraint"
+            app:layout_constraintStart_toEndOf="@+id/character_image_constraint"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Spider-Man Comic" />
+            tools:text="Spider-Man" />
 
         <TextView
-            android:id="@+id/series_description"
+            android:id="@+id/character_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:fontFamily="@font/audiowide"
-            android:maxLines="5"
+            android:maxLines="3"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/series_name"
-            app:layout_constraintTop_toBottomOf="@+id/series_name"
+            app:layout_constraintStart_toStartOf="@+id/character_name"
+            app:layout_constraintTop_toBottomOf="@+id/character_name"
             tools:text="Attuma was born into te tribe of Homo mermanus who escewed civilization to live as nomadic barbarians. For some unrecorded reason, Attuma was endowed with strength far surpassing that of his people." />
 
-        <ProgressBar
-            android:id="@+id/series_progressbar"
+        <TextView
+            android:id="@+id/character_comics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/series_image_constraint"
-            app:layout_constraintEnd_toEndOf="@+id/series_image_constraint"
-            app:layout_constraintStart_toStartOf="@id/series_image_constraint"
-            app:layout_constraintTop_toTopOf="@id/series_image_constraint" />
+            android:fontFamily="@font/audiowide"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/character_description"
+            tools:text="Comics 50" />
+
+        <TextView
+            android:id="@+id/character_series"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/audiowide"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/character_comics"
+            tools:text="Series 50" />
+
+        <ProgressBar
+            android:id="@+id/character_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/character_image_constraint"
+            app:layout_constraintEnd_toEndOf="@+id/character_image_constraint"
+            app:layout_constraintStart_toStartOf="@id/character_image_constraint"
+            app:layout_constraintTop_toTopOf="@id/character_image_constraint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.example.marvelapp.ui.series
+package com.example.marvelapp.ui.characterseries
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marvelapp.R
 import com.example.marvelapp.databinding.FragmentSeriesBinding
-import com.example.marvelapp.ui.allhero.MarvelLoadStateAdapter
+import com.example.marvelapp.ui.allcharacters.MarvelLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,7 +17,7 @@ class SeriesFragment(private val characterId: String) : Fragment(R.layout.fragme
 
     private var _binding: FragmentSeriesBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<SeriesViewModel>()
+    private val seriesViewModel by viewModels<SeriesViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,7 +49,7 @@ class SeriesFragment(private val characterId: String) : Fragment(R.layout.fragme
             seriesRecyclerView.setHasFixedSize(true)
         }
 
-        viewModel.getCharacterSeries(characterId).observe(viewLifecycleOwner) {
+        seriesViewModel.getCharacterSeries(characterId).observe(viewLifecycleOwner) {
             seriesAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
 

@@ -15,9 +15,9 @@
         android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/results_could_not_be_loaded"
         android:textColor="@color/black"
-        android:textSize="17sp"
-        android:text="@string/results_could_not_be_loaded" />
+        android:textSize="17sp" />
 
     <Button
         android:id="@+id/retryButton"

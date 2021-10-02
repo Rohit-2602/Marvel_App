@@ -1,4 +1,4 @@
-package com.example.marvelapp.ui.allhero
+package com.example.marvelapp.ui.allcharacters
 
 import android.util.Log
 import androidx.paging.PagingSource

@@ -1,58 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/comic_cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp"
+        android:background="@color/light_gray"
+        android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/comicThumbnail"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/comic_image_constraint"
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/spiderman"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/comic_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/spiderman"
+                tools:ignore="ContentDescription" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/comicTitle"
+            android:id="@+id/comic_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Comic Title"
-            android:textSize="20sp"
-            android:maxLines="1"
-            android:ellipsize="end"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/audiowide"
+            android:maxLines="1"
             android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/comicThumbnail"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/comic_image_constraint"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Spider-Man Comic" />
 
         <TextView
-            android:id="@+id/comicDescription"
+            android:id="@+id/comic_description"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:ellipsize="end"
-            android:maxLines="3"
-            tools:text="Comic Description"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/audiowide"
+            android:maxLines="5"
+            android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/comicThumbnail"
-            app:layout_constraintTop_toBottomOf="@id/comicTitle" />
+            app:layout_constraintStart_toStartOf="@+id/comic_name"
+            app:layout_constraintTop_toBottomOf="@+id/comic_name"
+            tools:text="Attuma was born into te tribe of Homo mermanus who escewed civilization to live as nomadic barbarians. For some unrecorded reason, Attuma was endowed with strength far surpassing that of his people." />
+
+        <ProgressBar
+            android:id="@+id/comic_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/comic_image_constraint"
+            app:layout_constraintEnd_toEndOf="@+id/comic_image_constraint"
+            app:layout_constraintStart_toStartOf="@id/comic_image_constraint"
+            app:layout_constraintTop_toTopOf="@id/comic_image_constraint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

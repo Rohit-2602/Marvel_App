@@ -1,15 +1,20 @@
-package com.example.marvelapp.ui.series
+package com.example.marvelapp.ui.characterseries
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.example.marvelapp.data.SeriesResult
 import com.example.marvelapp.databinding.ItemSeriesBinding
 
-// Used in CharacterDetailFragment
 class SeriesRecyclerViewAdapter :
     PagingDataAdapter<SeriesResult, SeriesRecyclerViewAdapter.ComicViewHolder>(COMPARATOR_COMICS) {
 
@@ -29,9 +34,32 @@ class SeriesRecyclerViewAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(series: SeriesResult) {
             binding.apply {
-                Glide.with(itemView).load(series.thumbnail.path + "." + series.thumbnail.extension)
-                    .into(seriesThumbnail)
-                seriesTitle.text = series.title
+                Glide.with(itemView)
+                    .load(series.thumbnail.path + "." + series.thumbnail.extension)
+                    .listener(object : RequestListener<Drawable> {
+                        override fun onLoadFailed(
+                            e: GlideException?,
+                            model: Any?,
+                            target: Target<Drawable>?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            seriesProgressbar.isVisible = false
+                            return false
+                        }
+
+                        override fun onResourceReady(
+                            resource: Drawable?,
+                            model: Any?,
+                            target: Target<Drawable>?,
+                            dataSource: DataSource?,
+                            isFirstResource: Boolean
+                        ): Boolean {
+                            seriesProgressbar.isVisible = false
+                            return false
+                        }
+                    })
+                    .centerCrop().into(seriesImage)
+                seriesName.text = series.title
                 seriesDescription.text = series.description
             }
         }
