@@ -15,13 +15,19 @@ import com.example.marvelapp.data.SeriesResult
 import com.example.marvelapp.databinding.ItemSeriesBinding
 import com.example.marvelapp.util.Comparator.CHARACTER_SERIES_COMPARATOR
 
-class SeriesRecyclerViewAdapter :
-    PagingDataAdapter<SeriesResult, SeriesRecyclerViewAdapter.ComicViewHolder>(CHARACTER_SERIES_COMPARATOR) {
+class SeriesRecyclerViewAdapter(private val listener: SeriesClickListener) :
+    PagingDataAdapter<SeriesResult, SeriesRecyclerViewAdapter.SeriesViewHolder>(CHARACTER_SERIES_COMPARATOR) {
 
-    inner class ComicViewHolder(private val binding: ItemSeriesBinding) :
+    inner class SeriesViewHolder(private val binding: ItemSeriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(series: SeriesResult) {
+        fun bind(series: SeriesResult, position: Int) {
             binding.apply {
+                if (position % 2 != 0) {
+                    seriesCardView.rotationY = 180f
+                    seriesImage.rotationY = 180f
+                    seriesName.rotationY = 180f
+                    seriesDescription.rotationY = 180f
+                }
                 Glide.with(itemView)
                     .load(series.thumbnail.path + "." + series.thumbnail.extension)
                     .listener(object : RequestListener<Drawable> {
@@ -53,15 +59,23 @@ class SeriesRecyclerViewAdapter :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeriesViewHolder {
         val binding = ItemSeriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ComicViewHolder(binding)
+        val seriesViewHolder = SeriesViewHolder(binding)
+        binding.seriesCardView.setOnClickListener {
+            listener.showSeriesDetail(getItem(seriesViewHolder.absoluteAdapterPosition)!!)
+        }
+        return seriesViewHolder
     }
 
-    override fun onBindViewHolder(holder: ComicViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
         val currentItem = getItem(position)
         if (currentItem != null) {
-            holder.bind(currentItem)
+            holder.bind(currentItem, position)
         }
     }
+}
+
+interface SeriesClickListener {
+    fun showSeriesDetail(series: SeriesResult)
 }

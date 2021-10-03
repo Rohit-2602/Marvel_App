@@ -15,13 +15,19 @@ import com.example.marvelapp.data.ComicResult
 import com.example.marvelapp.databinding.ItemComicBinding
 import com.example.marvelapp.util.Comparator.CHARACTER_COMICS_COMPARATOR
 
-class ComicRecyclerViewAdapter :
+class ComicRecyclerViewAdapter(private val listener: ComicClickListener) :
     PagingDataAdapter<ComicResult, ComicRecyclerViewAdapter.ComicViewHolder>(CHARACTER_COMICS_COMPARATOR) {
 
     inner class ComicViewHolder(private val binding: ItemComicBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(comic: ComicResult) {
+        fun bind(comic: ComicResult, position: Int) {
             binding.apply {
+                if (position % 2 != 0) {
+                    comicCardView.rotationY = 180f
+                    comicImage.rotationY = 180f
+                    comicName.rotationY = 180f
+                    comicDescription.rotationY = 180f
+                }
                 Glide.with(itemView)
                     .load(comic.thumbnail.path + "." + comic.thumbnail.extension)
                     .listener(object : RequestListener<Drawable> {
@@ -55,13 +61,21 @@ class ComicRecyclerViewAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicViewHolder {
         val binding = ItemComicBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ComicViewHolder(binding)
+        val comicViewHolder = ComicViewHolder(binding)
+        binding.comicCardView.setOnClickListener {
+            listener.showComicDetail(getItem(comicViewHolder.absoluteAdapterPosition)!!)
+        }
+        return comicViewHolder
     }
 
     override fun onBindViewHolder(holder: ComicViewHolder, position: Int) {
         val currentItem = getItem(position)
         if (currentItem != null) {
-            holder.bind(currentItem)
+            holder.bind(currentItem, position)
         }
     }
+}
+
+interface ComicClickListener {
+    fun showComicDetail(comic: ComicResult)
 }
