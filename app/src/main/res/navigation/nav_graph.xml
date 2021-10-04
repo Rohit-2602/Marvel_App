@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/allHeroFragment">
+    app:startDestination="@id/allCharacterFragment">
 
     <fragment
-        android:id="@+id/allHeroFragment"
+        android:id="@+id/allCharacterFragment"
         android:name="com.example.marvelapp.ui.allcharacters.AllCharacterFragment"
         android:label="fragment_all_heroes"
         tools:layout="@layout/fragment_all_characters" >
         <action
             android:id="@+id/action_allHeroFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment" />
+        <action
+            android:id="@+id/action_allHeroFragment_to_favouriteCharacterFragment"
+            app:destination="@id/favouriteCharacterFragment" />
     </fragment>
     <fragment
         android:id="@+id/characterDetailFragment"
@@ -22,5 +25,14 @@
         <argument
             android:name="character"
             app:argType="com.example.marvelapp.data.CharacterResult" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteCharacterFragment"
+        android:name="com.example.marvelapp.ui.favouritecharacters.FavouriteCharacterFragment"
+        android:label="fragment_favourite_characters"
+        tools:layout="@layout/fragment_favourite_characters" >
+        <action
+            android:id="@+id/action_favouriteCharacterFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
     </fragment>
 </navigation>

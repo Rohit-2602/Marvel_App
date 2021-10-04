@@ -33,18 +33,29 @@
 
         </androidx.cardview.widget.CardView>
 
+        <ImageView
+            android:id="@+id/like_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_not_liked"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
         <TextView
             android:id="@+id/character_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:ellipsize="end"
             android:fontFamily="@font/audiowide"
             android:maxLines="1"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/like_button"
             app:layout_constraintStart_toEndOf="@+id/character_image_constraint"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Spider-Man" />

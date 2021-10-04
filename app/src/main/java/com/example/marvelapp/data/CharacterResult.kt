@@ -1,17 +1,24 @@
 package com.example.marvelapp.data
 
 import android.os.Parcelable
+import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity(tableName = "character_table")
 data class CharacterResult(
-    val id: String,
-    val name: String,
-    val description: String,
-    val thumbnail: Thumbnail,
-    val comics: Comics,
-    val series: Series,
-    val urls: List<Url>
+    @PrimaryKey()
+    var id: String = "",
+    var name: String = "",
+    var description: String = "",
+    @Embedded
+    var thumbnail: Thumbnail = Thumbnail("", ""),
+    @Embedded
+    var comics: Comics = Comics(""),
+    @Embedded
+    var series: Series = Series(""),
+    @Ignore
+    var urls: List<Url> = ArrayList(),
 ) : Parcelable {
 
     @Parcelize
@@ -21,9 +28,9 @@ data class CharacterResult(
     data class Url(val type: String, val url: String): Parcelable
 
     @Parcelize
-    data class Comics(val available: String): Parcelable
+    data class Comics(@ColumnInfo(name = "comic_available") val available: String): Parcelable
 
     @Parcelize
-    data class Series(val available: String): Parcelable
+    data class Series(@ColumnInfo(name = "series_available") val available: String): Parcelable
 
 }

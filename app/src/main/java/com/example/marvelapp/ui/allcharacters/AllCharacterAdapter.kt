@@ -2,6 +2,7 @@ package com.example.marvelapp.ui.allcharacters
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -12,12 +13,15 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.example.marvelapp.R
 import com.example.marvelapp.data.CharacterResult
 import com.example.marvelapp.databinding.ItemCharacterBinding
 import com.example.marvelapp.util.Comparator.CHARACTER_COMPARATOR
 
-class AllCharacterAdapter(private val listener: OnClickListener) :
+class AllCharacterAdapter(private val listener: CharacterClickListener) :
     PagingDataAdapter<CharacterResult, AllCharacterAdapter.AllCharacterViewHolder>(CHARACTER_COMPARATOR) {
+
+    var favourites: List<CharacterResult> = ArrayList()
 
     inner class AllCharacterViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -66,19 +70,40 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
                 val description = character.description
                 if (description == "") {
                     characterDescription.text = "No Description"
-                }
-                else {
+                } else {
                     characterDescription.text = character.description
                 }
                 characterComics.text = "Comics: ${character.comics.available}"
                 characterSeries.text = "Series: ${character.series.available}"
+                val favCharacter = favourites.find { it.id == character.id }
+                if (favCharacter != null) {
+                    likeButton.setImageResource(R.drawable.ic_liked)
+                } else {
+                    likeButton.setImageResource(R.drawable.ic_not_liked)
+                }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllCharacterViewHolder {
         val binding = ItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AllCharacterViewHolder(binding)
+        val allCharacterViewHolder = AllCharacterViewHolder(binding)
+        Log.i("Rohit Fav", favourites.size.toString())
+        binding.likeButton.setOnClickListener {
+            val position = allCharacterViewHolder.absoluteAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                val character = getItem(position)
+                if (character != null) {
+                    val favCharacter = favourites.find { it.id == character.id }
+                    if (favCharacter != null) {
+                        listener.removeFromFavourite(character)
+                    } else {
+                        listener.addToFavourite(character)
+                    }
+                }
+            }
+        }
+        return allCharacterViewHolder
     }
 
     override fun onBindViewHolder(holder: AllCharacterViewHolder, position: Int) {
@@ -87,8 +112,16 @@ class AllCharacterAdapter(private val listener: OnClickListener) :
             holder.bind(currentCharacter)
         }
     }
+
+    fun updateFavourites(favouritesUpdated: List<CharacterResult>) {
+        favourites = favouritesUpdated
+        notifyDataSetChanged()
+    }
+
 }
 
-interface OnClickListener {
+interface CharacterClickListener {
     fun onClick(character: CharacterResult)
+    fun addToFavourite(character: CharacterResult)
+    fun removeFromFavourite(character: CharacterResult)
 }

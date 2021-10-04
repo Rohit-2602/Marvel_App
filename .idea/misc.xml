@@ -19,10 +19,19 @@
         <entry key="..\:/Android_Projects/MarvelApp/app/src/main/res/layout/item_series.xml" value="0.23854166666666668" />
         <entry key="..\:/Android_Projects/MarvelApp/app/src/main/res/layout/load_state_footer.xml" value="0.23854166666666668" />
         <entry key="..\:/Android_Projects/MarvelApp/app/src/main/res/menu/all_character_menu.xml" value="0.23854166666666668" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/drawable/bottom_nav_item_selector.xml" value="0.2546875" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.2546875" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/drawable/ic_liked.xml" value="0.2546875" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/drawable/ic_not_liked.xml" value="0.2546875" />
         <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/drawable/shape_rectangle_corner.xml" value="0.11574074074074074" />
-        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/fragment_all_characters.xml" value="0.1175925925925926" />
-        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/fragment_comic.xml" value="0.1175925925925926" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/fragment_all_characters.xml" value="0.2" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/fragment_comic.xml" value="0.2" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/fragment_favourite_characters.xml" value="0.23854166666666668" />
         <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/fragment_series.xml" value="0.264" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/item_character.xml" value="0.2" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/layout/load_state_footer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android_Projects/Marvel_App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.23854166666666668" />
       </map>
     </option>
   </component>

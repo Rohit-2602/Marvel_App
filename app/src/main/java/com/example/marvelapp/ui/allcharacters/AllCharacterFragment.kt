@@ -18,7 +18,7 @@ import com.example.marvelapp.databinding.FragmentAllCharactersBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), OnClickListener {
+class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), CharacterClickListener {
 
     private val allCharacterViewModel by viewModels<AllCharacterViewModel>()
     private var _binding: FragmentAllCharactersBinding? = null
@@ -62,10 +62,27 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), OnClick
             }
         }
 
+        allCharacterViewModel.getFavouriteCharacters().observe(viewLifecycleOwner) {
+            allCharacterAdapter.updateFavourites(it)
+        }
+
         allCharacterViewModel.searchResult.observe(viewLifecycleOwner) {
             allCharacterAdapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
 
+    }
+
+    override fun onClick(character: CharacterResult) {
+        val action = AllCharacterFragmentDirections.actionAllHeroFragmentToCharacterDetailFragment(character)
+        findNavController().navigate(action)
+    }
+
+    override fun addToFavourite(character: CharacterResult) {
+        allCharacterViewModel.addToFavourite(character)
+    }
+
+    override fun removeFromFavourite(character: CharacterResult) {
+        allCharacterViewModel.removeFromFavourite(character)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -92,11 +109,6 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), OnClick
             }
         })
 
-    }
-
-    override fun onClick(character: CharacterResult) {
-        val action = AllCharacterFragmentDirections.actionAllHeroFragmentToCharacterDetailFragment(character)
-        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
