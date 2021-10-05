@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/allCharacterFragment"
-        android:icon="@drawable/ic_favorite"
+        android:icon="@drawable/ic_search"
         android:title="All Characters" />
 
     <item

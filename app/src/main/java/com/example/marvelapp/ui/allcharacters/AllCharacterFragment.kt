@@ -39,6 +39,7 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), Charact
             binding.apply {
                 progressBar.isVisible = loadState.source.refresh is LoadState.Loading
                 recyclerview.isVisible = loadState.source.refresh is LoadState.NotLoading
+                allCharacterRetryButton.isVisible = loadState.source.refresh is LoadState.Error
 
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached && allCharacterAdapter.itemCount < 1) {
@@ -59,6 +60,9 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), Charact
                     footer = MarvelLoadStateAdapter { allCharacterAdapter.retry() }
                 )
                 setHasFixedSize(true)
+            }
+            allCharacterRetryButton.setOnClickListener {
+                allCharacterAdapter.retry()
             }
         }
 

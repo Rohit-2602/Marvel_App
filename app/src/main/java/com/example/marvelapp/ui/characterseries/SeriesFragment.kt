@@ -32,6 +32,7 @@ class SeriesFragment(private val characterId: String) :
             binding.apply {
                 seriesProgressBar.isVisible = loadState.source.refresh is LoadState.Loading
                 seriesRecyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
+                seriesRetryButton.isVisible = loadState.source.refresh is LoadState.Error
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached && seriesAdapter.itemCount < 1
                 ) {
@@ -56,6 +57,9 @@ class SeriesFragment(private val characterId: String) :
             blackScreen.setOnClickListener {
                 blackScreen.visibility = View.GONE
                 seriesDetailConstraint.visibility = View.GONE
+            }
+            seriesRetryButton.setOnClickListener {
+                seriesAdapter.retry()
             }
         }
 
