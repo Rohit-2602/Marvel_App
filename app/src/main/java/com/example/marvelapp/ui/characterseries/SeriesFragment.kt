@@ -33,6 +33,7 @@ class SeriesFragment(private val characterId: String) :
                 seriesProgressBar.isVisible = loadState.source.refresh is LoadState.Loading
                 seriesRecyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
                 seriesRetryButton.isVisible = loadState.source.refresh is LoadState.Error
+                seriesNoConnection.isVisible = loadState.source.refresh is LoadState.Error
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached && seriesAdapter.itemCount < 1
                 ) {

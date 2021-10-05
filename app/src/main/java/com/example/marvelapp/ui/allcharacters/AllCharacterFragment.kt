@@ -40,6 +40,7 @@ class AllCharacterFragment : Fragment(R.layout.fragment_all_characters), Charact
                 progressBar.isVisible = loadState.source.refresh is LoadState.Loading
                 recyclerview.isVisible = loadState.source.refresh is LoadState.NotLoading
                 allCharacterRetryButton.isVisible = loadState.source.refresh is LoadState.Error
+                allCharacterNoConnection.isVisible = loadState.source.refresh is LoadState.Error
 
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached && allCharacterAdapter.itemCount < 1) {

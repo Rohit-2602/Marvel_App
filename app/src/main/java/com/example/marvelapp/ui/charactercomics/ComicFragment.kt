@@ -33,6 +33,7 @@ class ComicFragment(private val characterId: String):
                 comicProgressBar.isVisible = loadState.source.refresh is LoadState.Loading
                 comicRecyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
                 comicRetryButton.isVisible = loadState.source.refresh is LoadState.Error
+                comicNoConnection.isVisible = loadState.source.refresh is LoadState.Error
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached && comicAdapter.itemCount < 1) {
                     comicRecyclerView.isVisible = false

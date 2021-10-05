@@ -22,11 +22,17 @@ class ComicRecyclerViewAdapter(private val listener: ComicClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(comic: ComicResult, position: Int) {
             binding.apply {
-                if (position % 2 != 0) {
+                if (position % 2 == 1) {
                     comicCardView.rotationY = 180f
                     comicImage.rotationY = 180f
                     comicName.rotationY = 180f
                     comicDescription.rotationY = 180f
+                }
+                else {
+                    comicCardView.rotationY = 0f
+                    comicImage.rotationY = 0f
+                    comicName.rotationY = 0f
+                    comicDescription.rotationY = 0f
                 }
                 Glide.with(itemView)
                     .load(comic.thumbnail.path + "." + comic.thumbnail.extension)

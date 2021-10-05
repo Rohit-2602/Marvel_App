@@ -22,11 +22,17 @@ class SeriesRecyclerViewAdapter(private val listener: SeriesClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(series: SeriesResult, position: Int) {
             binding.apply {
-                if (position % 2 != 0) {
+                if (position % 2 == 1) {
                     seriesCardView.rotationY = 180f
                     seriesImage.rotationY = 180f
                     seriesName.rotationY = 180f
                     seriesDescription.rotationY = 180f
+                }
+                else {
+                    seriesCardView.rotationY = 0f
+                    seriesImage.rotationY = 0f
+                    seriesName.rotationY = 0f
+                    seriesDescription.rotationY = 0f
                 }
                 Glide.with(itemView)
                     .load(series.thumbnail.path + "." + series.thumbnail.extension)
